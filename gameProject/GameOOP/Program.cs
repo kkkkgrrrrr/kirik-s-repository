@@ -173,9 +173,9 @@ namespace GameOOP
         public class Display
         {
 
-            public void Disp()
+            public void Disp()                
             {
-                
+
                 
                 Characters.Hero hero = new Characters.Hero(10, 12, 70);
                 Control control = new Control();
@@ -261,10 +261,20 @@ namespace GameOOP
             }
         }
         
-        public static class Engine
+        public class Engine
         {
-            public static class Render
+            public class Render
             {
+                public int X(int x)
+                {
+                    x *= 13;
+                    return x;
+                }
+                public int Y(int y)
+                {
+                    y *= 9;
+                    return y;
+                }
                 public static string[,][,] Field =
                     {
                         {Textures.Pustota.pustota , Textures.Pustota.pustota , Textures.Pustota.pustota , Textures.Pustota.pustota ,Textures.Pustota.pustota, Textures.Pustota.pustota ,Textures.Pustota.pustota ,Textures.Pustota.pustota , },
@@ -278,22 +288,52 @@ namespace GameOOP
                         {Textures.Pustota.pustota , Textures.Pustota.pustota , Textures.Pustota.pustota , Textures.Pustota.pustota , Textures.Pustota.pustota, Textures.Pustota.pustota ,Textures.Pustota.pustota ,Textures.Pustota.pustota , },
                         {Textures.Pustota.pustota , Textures.Pustota.pustota , Textures.Pustota.pustota , Textures.Pustota.pustota , Textures.Pustota.pustota, Textures.Pustota.pustota ,Textures.Pustota.pustota ,Textures.Pustota.pustota , },
                     };
-
-                public static void Draw()
+                public static string[,][,] Field2 =
+{
+                    { Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1, },
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Pustota.pustota,Textures.Player.chudik,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Pustota.pustota,Textures.Kamushek.num1K,Textures.Pustota.pustota,Textures.Walls.wall1},
+                    { Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1,Textures.Walls.wall1, },
+                };
+                public static void Draw(string[,][,] bArray)
                 {
-                    for(int y = 0; y < Engine.Render.Field.GetLength(0) - 1; y++)
+                    Engine.Render render = new Engine.Render();
+                    for (int y = 0; y < bArray.GetLength(0); y++)
                     {
-                        for(int x = 0; x < Engine.Render.Field.GetLength(1) - 1; x++)
+                        for(int x = 0; x < bArray.GetLength(1); x++)
                         {
-                            Testing(Engine.Render.Field[x, y]);
+                            Drawing2nd(bArray[y, x], render.X(x), render.Y(y));
                         }
                     }
                 }
             }
         }
+
+        public static void Drawing2nd(string[,] array, int X, int Y)
+        { 
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.SetCursorPosition(j + X, i + Y);
+                    Console.Write(array[i, j]);
+                }
+                
+            }
+            
+
+        }
+
         public static void Testing(string[,] array)
         {
-            Console.Clear();
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
@@ -318,6 +358,19 @@ namespace GameOOP
                     {" ", " ", " ", ".", "W", "#", "M", "#", "W", ".", " ", " ", " " },
                     {" ", " ", " ", "'", "Ш", " ", " ", " ", "Ш", "*", " ", " ", " " },
                     {" ", " ", " ", "C", "Я", " ", " ", " ", "R", "D", " ", " ", " " },
+                };
+
+                public static string[,] chudik =
+                {
+                    {" ", " ", " ", " ", " ", "▓", "▓", " ", " ", " ", " ", " ", " " },
+                    {" ", " ", " ", " ", "▓", "▓", "▓", "▓", " ", " ", " ", " ", " " },
+                    {" ", " ", " ", " ", " ", "▓", "▓", "▓", " ", " ", " ", " ", " " },
+                    {" ", " ", " ", " ", " ", "_", "▓", "_", " ", " ", " ", " ", " " },
+                    {" ", " ", " ", " ", "▓", "▓", "▓", "▓", "▓", " ", " ", " ", " " },
+                    {" ", " ", " ", "▓", " ", "▓", "▓", "_", " ", "▓", " ", " ", " " },
+                    {" ", " ", " ", " ", " ", "▓", "▓", " ", " ", " ", " ", " ", " " },
+                    {" ", " ", " ", " ", " ", "▓", " ", "▓", " ", " ", " ", " ", " " },
+                    {" ", " ", " ", " ", " ", "▓", " ", "▓", " ", " ", " ", " ", " " },
                 };
                 
             }
@@ -352,6 +405,22 @@ namespace GameOOP
                     {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " " }
                 };
             }
+
+            public static class Walls
+            {
+                public static string[,] wall1 =
+                {
+                    {"█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█" },
+                    {"█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█" },
+                    {"█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█" },
+                    {"█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█" },
+                    {"█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█" },
+                    {"█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█" },
+                    {"█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█" },
+                    {"█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█" },
+                    {"█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█", "█" },
+                };
+            }
         }
     }
     
@@ -362,11 +431,9 @@ namespace GameOOP
             static void Zapusk()
             {
                 Game.Display display = new Game.Display();
-                Console.SetBufferSize(80, 80);
-                Console.SetWindowSize(70, 20);
                 Console.Title = "Game";
                 Console.OutputEncoding = Encoding.UTF8;
-                display.Disp();
+/*                display.Disp();*/
             }
             static void Testing(string[,] array)
             {
@@ -382,7 +449,8 @@ namespace GameOOP
                 Console.WriteLine(array.GetLength(0));
                 Console.WriteLine(array.GetLength(1));
             }
-            Engine.Render.Draw();
+            Zapusk();
+            Engine.Render.Draw(Engine.Render.Field2);
         }
     }
 }
