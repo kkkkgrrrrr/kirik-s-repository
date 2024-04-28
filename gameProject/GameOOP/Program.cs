@@ -330,7 +330,7 @@ namespace GameOOP
                 {
 
                 }
-                public class Properties
+                public abstract class Properties
                 {
                     static Player playerinf = new Player(false, false);
                     static Wall wallinf = new Wall(false, false);
