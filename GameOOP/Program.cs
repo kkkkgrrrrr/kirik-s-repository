@@ -364,6 +364,21 @@ namespace GameOOP
                     public int matrix_X = 3;
                     public int matrix_Y = 3;
                 }
+                public static int[] GetIndexesOfArray2D(Properties[,] array, Properties unit)
+                {
+                    for(int i = 0; i < array.GetLength(0); i++)
+                    {
+                        for(int j = 0; j < array.GetLength(1); j++)
+                        {
+                            if (array[i, j] == unit)
+                            {
+                                return [j, i];
+                            }
+                        }
+                    }
+                    return [-1, -1];
+                }
+
                 public class Enemy
                 {
 
@@ -395,14 +410,10 @@ namespace GameOOP
                         {
                             for (int j = 0; j < map.GetLength(1); j++)
                             {
-                                
-                                
-                                    
                                 if (map[i, j] == Textures.Pustota.pustota)
                                 {
                                     matrix[i, j] = clearinf;
-                                }
-                                    
+                                }    
                                 if (map[i, j] == Textures.Trees.tree1)
                                 {
                                     matrix[i, j] = treeinf;
@@ -413,14 +424,14 @@ namespace GameOOP
                                 if (map[i, j] == Textures.Kamushek.num1K)
                                 {
                                     matrix[i, j] = stoneinf;
-                                    matrix[i - 1, j -1] = stoneinf;
+                                    matrix[i - 1, j - 1] = stoneinf;
                                     matrix[i - 1, j] = stoneinf;
                                     matrix[i, j - 1] = stoneinf;
                                 }
                                 if (map[i, j] == Textures.Coins.coin1)
                                 {
                                     matrix[i, j] = coin1inf;
-                                    matrix[i - 1, j -1] = coin1inf;
+                                    matrix[i - 1, j - 1] = coin1inf;
                                     matrix[i - 1, j] = coin1inf;
                                     matrix[i, j - 1] = coin1inf;
                                 }
@@ -471,12 +482,16 @@ namespace GameOOP
                         }
                         if (matrix[(int)(nextY / Textures.Player.movingModelOfPlayerL1.GetLength(0)), (int)(nextX / Textures.Player.movingModelOfPlayerL1.GetLength(1))] == coin1inf)
                         {
-                            Drawing2ndRev1(Textures.Pustota.pustota, (int)(nextX / Textures.Player.movingModelOfPlayerL1.GetLength(1)), (int)(nextY / Textures.Player.movingModelOfPlayerL1.GetLength(0)), ConsoleColor.Black);
-                            matrix[(int)(nextY / Textures.Player.movingModelOfPlayerL1.GetLength(0)), (int)(nextX / Textures.Player.movingModelOfPlayerL1.GetLength(1))] = clearinf;
-                            matrix[(int)(nextY / Textures.Player.movingModelOfPlayerL1.GetLength(0)) - 1, (int)(nextX / Textures.Player.movingModelOfPlayerL1.GetLength(1)) - 1] = clearinf;
-                            matrix[(int)(nextY / Textures.Player.movingModelOfPlayerL1.GetLength(0)) - 1, (int)(nextX / Textures.Player.movingModelOfPlayerL1.GetLength(1))] = clearinf;
-                            matrix[(int)(nextY / Textures.Player.movingModelOfPlayerL1.GetLength(0)), (int)(nextX / Textures.Player.movingModelOfPlayerL1.GetLength(1)) - 1] = clearinf;
-
+                            Console.SetCursorPosition(400, 100);
+                            Console.Write("AAAAAA");
+                            int xx = nextX;
+                            int yy = nextY;
+                            Drawing2ndRev1(Textures.Pustota.pustota, GetIndexesOfArray2D(matrix, coin1inf)[0] + 1, GetIndexesOfArray2D(matrix, coin1inf)[1] + 1, ConsoleColor.Black);
+                            matrix[GetIndexesOfArray2D(matrix, coin1inf)[0] + 2, GetIndexesOfArray2D(matrix, coin1inf)[1] + 2] = clearinf;
+                            matrix[GetIndexesOfArray2D(matrix, coin1inf)[0], GetIndexesOfArray2D(matrix, coin1inf)[1]] = clearinf;
+                            matrix[GetIndexesOfArray2D(matrix, coin1inf)[0], GetIndexesOfArray2D(matrix, coin1inf)[1] + 1] = clearinf;
+                            matrix[GetIndexesOfArray2D(matrix, coin1inf)[0] + 1, GetIndexesOfArray2D(matrix, coin1inf)[1]] = clearinf;
+                            
                         }
                     }
                     public class Player : Properties
@@ -746,8 +761,7 @@ namespace GameOOP
                             }
                             else if ((bArray[y, x] == Textures.Coins.coin1))
                             {
-                                info.coinx = x;
-                                info.coiny = y;
+                                
                                 Drawing2nd(bArray[y, x], render.X(x), render.Y(y), ConsoleColor.Yellow);
                             }
                             else
