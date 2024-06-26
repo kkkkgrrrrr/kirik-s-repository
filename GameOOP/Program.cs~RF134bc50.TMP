@@ -1,10 +1,11 @@
 ﻿using System.Text;
-using GameOOP;
-using static GameOOP.Engine;
+using static GameOOP.Game;
+using static GameOOP.Game.Engine.HUD;
 using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
 using System.Runtime.ConstrainedExecution;
 using System.IO;
+using static GameOOP.Game.Engine;
 using static GameOOP.Info;
 using System.Numerics;
 namespace GameOOP
@@ -132,7 +133,7 @@ namespace GameOOP
     }
     public class Info
     {
-
+        
         public void PropertiesActivation1(Properties properties)
         {
             properties.PropertiesActivate();
@@ -186,7 +187,7 @@ namespace GameOOP
                     SaveGameStats.SaveCollection["healthPoints"] = 100;
                 }
                 //SaveGameStats.healthPoints = healthPoints;
-                HUD.HealthPointVisual((int)SaveGameStats.SaveCollection["healthPoints"]);
+                HealthPointVisual((int)SaveGameStats.SaveCollection["healthPoints"]);
 
             }
             public void DamageHP(int hp)
@@ -198,7 +199,7 @@ namespace GameOOP
                     SaveGameStats.SaveCollection["healthPoints"] = 0;
                 }
                 //SaveGameStats.healthPoints = healthPoints;
-                HUD.HealthPointVisual((int)SaveGameStats.SaveCollection["healthPoints"]);
+                HealthPointVisual((int)SaveGameStats.SaveCollection["healthPoints"]);
             }
 
             public int X_Matrix(int x)
@@ -231,7 +232,7 @@ namespace GameOOP
         {
 
         }
-
+        
 
     }
     public abstract class Properties
@@ -327,7 +328,7 @@ namespace GameOOP
                 {
                     SaveGameStats.InDialogue = true;
                     player.CanMove = false;
-                    Engine.Drawing2nd(DialogWindow.DialogueWindow_Visual.dialogueCompanionName, 17, 110, ConsoleColor.Magenta);
+                    Drawing2nd(DialogWindow.DialogueWindow_Visual.dialogueCompanionName, 17, 110, ConsoleColor.Magenta);
                     DialogWindow.DialogueWindow_Visual.DrawingDialoguePortraitMercant(DialogWindow.DialogueWindow_Visual.dialogueCompanionPortrait, 10, 116, ConsoleColor.Magenta, ConsoleColor.Blue);
                     DialogWindow.DialogEngine.DialogueActivationMerchant(0);
                     consoleKey = Console.ReadKey(true).Key;
@@ -354,10 +355,11 @@ namespace GameOOP
             }
             public override void PropertiesActivate()
             {
+                HUD hUD_Visual = new HUD();
                 SaveGameStats.SaveCollection["coins"] = (int)SaveGameStats.SaveCollection["coins"] + 1;
-                HUD.coinsVisual((int)SaveGameStats.SaveCollection["coins"]);
+                hUD_Visual.coinsVisual((int)SaveGameStats.SaveCollection["coins"]);
                 Console.SetCursorPosition(10, 3);
-                Engine.Drawing2ndRev1(Textures.Clear.clear, GetIndexesOfArray2D(matrix2, PropertiesCollection.GetValueOrDefault("c"))[0] + 1, GetIndexesOfArray2D(matrix2, PropertiesCollection.GetValueOrDefault("c"))[1] + 1, ConsoleColor.Black);
+                Drawing2ndRev1(Textures.Clear.clear, GetIndexesOfArray2D(matrix2, PropertiesCollection.GetValueOrDefault("c"))[0] + 1, GetIndexesOfArray2D(matrix2, PropertiesCollection.GetValueOrDefault("c"))[1] + 1, ConsoleColor.Black);
                 int xx = GetIndexesOfArray2D(matrix2, PropertiesCollection.GetValueOrDefault("c"))[0];
                 int yy = GetIndexesOfArray2D(matrix2, PropertiesCollection.GetValueOrDefault("c"))[1];
                 matrix2[yy, xx] = PropertiesCollection.GetValueOrDefault(" ");
@@ -392,7 +394,7 @@ namespace GameOOP
                         SaveGameStats.numberOfField -= 1;
                         SaveGameStats.SaveCollection["numberOfField"] = SaveGameStats.numberOfField;
                     }
-                    Engine.RunField(render, SaveGameStats.numberOfField);
+                    RunField(render, SaveGameStats.numberOfField);
 
                 }
             }
@@ -821,8 +823,8 @@ namespace GameOOP
             {
                 n[i]  = hp % 10;
                 hp /= 10;
-                HUD.HUD_Visual.field_HUD[1, 7 - i] = HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 0];
-                HUD.HUD_Visual.field_HUD[2, 7 - i] = HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 1];
+                field_HUD[1, 7 - i] = HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 0];
+                field_HUD[2, 7 - i] = HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 1];
                 Drawing2nd(HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 0], (7 - i) * 12, 5, ConsoleColor.Red);
                 Drawing2nd(HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 1], (7 - i) * 12, 5 * 2, ConsoleColor.Red);
                 i++;
@@ -839,8 +841,8 @@ namespace GameOOP
             {
                 n[i]  = coins % 10;
                 coins /= 10;
-                HUD.HUD_Visual.field_HUD[4, 4 - i] = HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 0];
-                HUD.HUD_Visual.field_HUD[5, 4 - i] = HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 1];
+                field_HUD[4, 4 - i] = HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 0];
+                field_HUD[5, 4 - i] = HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 1];
                 Drawing2nd(HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 0], (4 - i) * 12, 5 * 4, ConsoleColor.DarkYellow);
                 Drawing2nd(HUD_Visual.HUDNumbers.ArrayOfHUDNumbers[n[i], 1], (4 - i) * 12, 5 * 5, ConsoleColor.DarkYellow);
                 i++;
@@ -2187,7 +2189,7 @@ namespace GameOOP
                     };
         }
     }
-
+    
     public class Engine
     {
         public static void Moving(SaveGameStats saveGameStats)
@@ -2371,7 +2373,7 @@ namespace GameOOP
     {
         static void Main(string[] args)
         {
-
+            
             static void Testing(string[,] array)
             {
                 Console.Clear();
@@ -2389,7 +2391,7 @@ namespace GameOOP
             Engine engine = new Engine();
             Console.CursorVisible = false;
             engine.StartScreen();
-
+            
         }
     }
 }

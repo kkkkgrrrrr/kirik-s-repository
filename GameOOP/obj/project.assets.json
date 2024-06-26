@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\gameProject\\GameOOP\\GameOOP.csproj",
-      "projectName": "GameOOP",
-      "projectPath": "E:\\gameProject\\GameOOP\\GameOOP.csproj",
+      "projectUniqueName": "E:\\gameProject\\GameOOP\\Main.csproj",
+      "projectName": "Main",
+      "projectPath": "E:\\gameProject\\GameOOP\\Main.csproj",
       "packagesPath": "C:\\Users\\Kirill\\.nuget\\packages\\",
       "outputPath": "E:\\gameProject\\GameOOP\\obj\\",
       "projectStyle": "PackageReference",
