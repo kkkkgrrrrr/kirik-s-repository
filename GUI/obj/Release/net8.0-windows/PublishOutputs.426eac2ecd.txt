@@ -1,0 +1,11 @@
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\Main.exe
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\ButtonPictures\logo.png
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\GUI.exe
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\Main.deps.json
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\Main.runtimeconfig.json
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\GUI.dll
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\GUI.deps.json
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\GUI.runtimeconfig.json
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\GUI.pdb
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\Main.dll
+E:\gameProject\GUI\bin\Release\net8.0-windows\publish\Main.pdb
